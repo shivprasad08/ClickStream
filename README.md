@@ -4,10 +4,6 @@ A end-to-end data engineering project where I built a real-time streaming pipeli
 
 I built this to go deeper into data engineering concepts beyond just writing ETL scripts — things like streaming ingestion, schema enforcement, watermarking for late data, deduplication, and CDC-style upserts using Delta Lake.
 
-## Why I built this
-
-I've mostly worked on AI/backend projects (like [CodeGraph](https://github.com/shivprasad08), an AI-powered codebase visualizer), but I wanted a project that specifically demonstrates data engineering skills — the kind of pipeline architecture used in tools like Palantir Foundry. So instead of another CRUD app or ML model, I built something that focuses on how data moves and gets progressively cleaned as it flows through a system.
-
 ## What it actually does
 
 1. A **producer** simulates a live e-commerce clickstream (page views, add-to-cart, purchases, etc.) and writes events as JSON files
