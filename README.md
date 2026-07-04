@@ -24,21 +24,21 @@ Everything runs locally in Docker — no cloud account needed to try it out.
 ## Architecture
 
 ```
-┌──────────┐     ┌─────────────┐     ┌────────┐     ┌────────┐     ┌────────┐     ┌─────────┐
-│ Producer │────▶│ Raw JSON    │────▶│ Bronze │────▶│ Silver │────▶│  Gold  │────▶│ FastAPI │
-│ (fake    │     │ files       │     │ (Delta)│     │ (Delta)│     │ (Delta)│     │  API    │
-│ events)  │     │ (landing    │     │        │     │        │     │        │     │         │
-└──────────┘     │  zone)      │     └────────┘     └────────┘     └────────┘     └─────────┘
-                  └─────────────┘         │              │              │
-                                          ▼              ▼              ▼
-                                    quarantine       rejected      MinIO (S3-
-                                    (bad JSON)     (bad records)   compatible
-                                                                    storage)
+┌──────────┐      ┌─────────────┐      ┌────────┐      ┌────────┐     ┌────────┐      ┌─────────┐
+│ Producer │────▶│ Raw JSON    │────▶ │ Bronze │────▶│ Silver │────▶│  Gold  │────▶│ FastAPI │
+│ (fake    │      │ files       │      │ (Delta)│      │ (Delta)│     │ (Delta)│      │  API    │
+│ events)  │      │ (landing    │      │        │      │        │     │        │      │         │
+└──────────┘      │  zone)      │      └────────┘      └────────┘     └────────┘      └─────────┘
+                  └─────────────┘          │              │              │
+                                           ▼              ▼              ▼
+                                     quarantine       rejected      MinIO (S3-
+                                     (bad JSON)     (bad records)   compatible
+                                                                     storage)
 
                                     ┌──────────────────────────────┐
-                                    │  Airflow (daily maintenance:  │
-                                    │  OPTIMIZE + VACUUM on all     │
-                                    │  Delta tables)                 │
+                                    │  Airflow (daily maintenance: │
+                                    │  OPTIMIZE + VACUUM on all    │
+                                    │  Delta tables)               │
                                     └──────────────────────────────┘
 ```
 
