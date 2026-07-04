@@ -1,0 +1,15 @@
+data/raw_events/*
+!data/raw_events/.gitkeep
+storage/*/*
+!storage/bronze/.gitkeep
+!storage/silver/.gitkeep
+!storage/gold/.gitkeep
+__pycache__/
+.env
+*.pyc
+.ipynb_checkpoints
+venv/
+.DS_Store
+hadoop/
+.pytest_cache/
+*.log
